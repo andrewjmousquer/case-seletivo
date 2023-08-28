@@ -47,27 +47,11 @@ Se você precisar atualizar o `npm`, você pode fazer isso usando o `npm`! Legal
     $ npm i
 
 
-## Configurações
-
-Abra `/environments` e edite-o com suas configurações de ambiente.
-
-Para desenvolvimento local altere:
-- `environment.ts`
-
-Para build em produção/homologação altere:
-- `environment.prod.ts`
-
 ## Executando o projeto
 
-    $ npm start
+    $ ng serve
 
 A aplicação responderá no endereço: http://localhost:4200.
-
-## Build para Produção
-
-    $ npm run build-prod
-
-O build irá gerar a pasta `/dist` na raiz do projeto.
 
 MUITO OBRIGADO!!!! = ) 
 
