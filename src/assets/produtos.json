@@ -1,0 +1,16 @@
+﻿[
+  {
+    "id": 1,
+    "fabricante": "Fabricante A",
+    "codigo": "001",
+    "descricao": "Produto A",
+    "valor": 10.99
+  },
+  {
+    "id": 2,
+    "fabricante": "Fabricante B",
+    "codigo": "002",
+    "descricao": "Produto B",
+    "valor": 20.49
+  }
+]

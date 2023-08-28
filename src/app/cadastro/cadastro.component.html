@@ -1,0 +1,77 @@
+<div class="product-form-container" fxLayout="column" fxLayoutGap="16px">
+  <div class="input-row" fxLayout="row" fxLayoutGap="16px">
+    <mat-form-field>
+      <input matInput placeholder="Fabricante" [(ngModel)]="novoProduto.fabricante">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Cód. Produto" [(ngModel)]="novoProduto.codigo">
+    </mat-form-field>
+    <mat-form-field fxFlex="1 1 100px">
+      <input matInput placeholder="Descrição" [(ngModel)]="novoProduto.descricao">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Valor" [(ngModel)]="novoProduto.valor">
+    </mat-form-field>
+  </div>
+  <div class="button-row" fxLayout="row" fxLayoutAlign="end">
+    <button mat-raised-button color="primary" class="custom-button" (click)="adicionarProduto()">Adicionar Produto</button>
+  </div>
+</div>
+
+
+<table mat-table [dataSource]="produtos">
+  <ng-container matColumnDef="fabricante">
+    <th mat-header-cell *matHeaderCellDef>Fabricante</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.fabricante }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef>Cód. Produto</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.codigo }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef>Descrição</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.descricao }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.valor | currency }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef>Ações</th>
+    <td mat-cell *matCellDef="let produto; let i = index">
+      <ng-container *ngIf="produtoEmEdicao !== produto; else editar">
+        <button mat-icon-button class="action-button edit-button" (click)="editarProduto(produto, i)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="action-button delete-button" (click)="excluirProduto(produto)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #editar>
+        <button mat-icon-button class="action-button save-button" (click)="salvarEdicao()">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button mat-icon-button class="action-button cancel-button" (click)="cancelarEdicao()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+  <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+</table>
+
+<div class="footer">
+  Desenvolvido por <strong>Andrew J Mousquer</strong>
+  <a href="https://www.instagram.com/andrewjmousquer" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://github.com/andrewjmousquer" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-github"></i>
+  </a>
+</div>

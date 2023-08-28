@@ -1,0 +1,60 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <ng-container *ngIf="editingTabIndex !== 0; else editTabLabel0">
+        {{ editedTabLabels[0] }}
+        <span class="edit-icon" (click)="startEditing(0)">&#9998;</span>
+      </ng-container>
+      <ng-template #editTabLabel0>
+        <input
+          type="text"
+          [(ngModel)]="editedTabLabels[0]"
+          (blur)="saveTab(0)"
+          (keyup.enter)="saveTab(0); editingTabIndex = null"
+          (keyup.esc)="cancelEdit()"
+          [ngClass]="{ 'edit-input': true, 'edit-input-active': editingTabIndex === 0 }"
+          autofocus
+        />
+        <button
+          class="rename-button"
+          (click)="saveTab(0); editingTabIndex = null"
+          [ngClass]="{ 'rename-button-active': editingTabIndex === 0 }"
+        >
+          Rename
+        </button>
+      </ng-template>
+    </ng-template>
+    <div class="tab-content">
+      <app-cadastro></app-cadastro>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <ng-container *ngIf="editingTabIndex !== 1; else editTabLabel1">
+        {{ editedTabLabels[1] }}
+        <span class="edit-icon" (click)="startEditing(1)">&#9998;</span>
+      </ng-container>
+      <ng-template #editTabLabel1>
+        <input
+          type="text"
+          [(ngModel)]="editedTabLabels[1]"
+          (blur)="saveTab(1)"
+          (keyup.enter)="saveTab(1); editingTabIndex = null"
+          (keyup.esc)="cancelEdit()"
+          [ngClass]="{ 'edit-input': true, 'edit-input-active': editingTabIndex === 1 }"
+          autofocus
+        />
+        <button
+          class="rename-button"
+          (click)="saveTab(1); editingTabIndex = null"
+          [ngClass]="{ 'rename-button-active': editingTabIndex === 1 }"
+        >
+          Rename
+        </button>
+      </ng-template>
+    </ng-template>
+    <div class="tab-content">
+      <app-calculo-preco></app-calculo-preco>
+    </div>
+  </mat-tab>
+</mat-tab-group>

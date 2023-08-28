@@ -1,0 +1,197 @@
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #3498db;
+  transition: color 0.2s ease-in-out;
+}
+
+.edit-button:hover {
+  color: #2980b9;
+}
+
+.save-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #27ae60;
+  transition: color 0.2s ease-in-out;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #f44336;
+  transition: color 0.2s ease-in-out;
+}
+
+.save-button:hover, .cancel-button:hover {
+  color: #2c3e50;
+}
+
+.action-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #2196f3;
+  transition: color 0.2s ease-in-out;
+}
+
+.action-button:hover {
+  color: #2c3e50;
+}
+
+.edit-container {
+  display: flex;
+  align-items: center;
+}
+
+.editable-value {
+  width: 60px; /* Ajuste o valor conforme necessário */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Seu estilo CSS ou SCSS */
+
+.custom-button {
+  background-color: #e57373; /* Cor vermelha */
+  color: white; /* Texto em branco para contrastar */
+  border-radius: 8px; /* Borda arredondada */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  font-size: 14px; /* Tamanho da fonte */
+  text-transform: uppercase; /* Texto em caixa alta */
+  height: 60px;
+}
+
+.custom-button:hover {
+  background-color: #f44336; /* Cor vermelha mais escura ao passar o mouse */
+}
+
+/* Seu estilo CSS ou SCSS */
+
+/* Estilos para o mat-form-field */
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 15px; /* Espaço inferior entre o campo de filtro e o botão */
+}
+
+.mat-label {
+  font-size: 14px;
+  color: #333; /* Cor do rótulo */
+}
+
+.mat-select {
+  font-size: 14px;
+}
+
+/* Estilos para o mat-select (quando expandido) */
+.mat-select-panel {
+  background-color: #f5f5f5; /* Cor de fundo da lista de opções */
+}
+
+/* Estilos para as opções do mat-select */
+.mat-option {
+  font-size: 14px;
+  color: #333; /* Cor do texto das opções */
+}
+
+.mat-option:hover {
+  background-color: #e0e0e0; /* Cor de fundo das opções ao passar o mouse */
+}
+
+/* Estilos para o botão de filtrar */
+.filter-button {
+  background-color: #4caf50; /* Cor verde */
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  height: 60px;
+}
+
+.filter-button:hover {
+  background-color: #45a049; /* Cor verde mais escura ao passar o mouse */
+}
+
+.mat-option {
+  font-size: 14px;
+}
+
+.mat-option:hover {
+  background-color: #e0e0e0;
+}
+
+.custom-form-field {
+  width: 22%;
+  height: 80px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff; /* Cor de fundo do campo de seleção */
+  border: none; /* Remova a borda padrão */
+  color: #333; /* Cor do texto */
+  appearance: none; /* Remova o estilo nativo do elemento */
+  border-radius: 4px; /* Adicione um pouco de arredondamento às bordas */
+}
+
+.custom-select::placeholder {
+  color: #999; /* Cor do texto do placeholder */
+}
+
+.footer {
+  text-align: center;
+  margin-top: 520px; /* Ajuste conforme necessário */
+}
+
+.footer a {
+  margin: 0 10px; /* Ajuste a margem conforme necessário */
+}
+
+.footer i {
+  font-size: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+.footer strong {
+  font-weight: bold;
+}
+
+/* No seu arquivo de estilos (por exemplo, styles.css) */
+.custom-table {
+  background-color: #f5f5f5; /* Substitua pela cor desejada */
+  border-collapse: collapse; /* Isso ajuda a remover espaçamentos entre as células */
+  width: 100%; /* Ou ajuste a largura conforme necessário */
+}
+
+/* Estilize os elementos de cabeçalho e célula da tabela, se necessário */
+.custom-table th, .custom-table td {
+  padding: 8px;
+  border: 1px solid #ddd; /* Borda para separar as células */
+}
+
+/* Estilize a linha do cabeçalho, se necessário */
+.custom-table tr.mat-header-row {
+  background-color: #f0f0f0;
+}
+
+/* Estilize as linhas de dados, se necessário */
+.custom-table tr.mat-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.total-valor {
+  display: contents;
+}
+
+.total-valor {
+  text-align: right;
+}
+
+
+
+
+
+

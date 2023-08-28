@@ -1,0 +1,101 @@
+<div class="product-management-container" fxLayout="column" fxLayoutGap="16px">
+  <button mat-raised-button color="warn" class="custom-button" (click)="excluirTudo()">Excluir Todos os Produtos</button>
+
+  <mat-form-field class="custom-form-field">
+    <mat-select class="custom-select" [(ngModel)]="filtroFabricante" placeholder="Filtrar por Fabricante">
+      <mat-option [value]="" (click)="limparFiltro()">Mostrar Tudo</mat-option>
+      <mat-option *ngFor="let fabricante of fabricantesUnicos" [value]="fabricante">
+        {{ fabricante }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="filter-button" (click)="aplicarFiltro()">Filtrar</button>
+
+  <table mat-table [dataSource]="produtosFiltrados">
+    <ng-container matColumnDef="fabricante">
+      <th mat-header-cell *matHeaderCellDef>Fabricante</th>
+      <td mat-cell *matCellDef="let produto">{{ produto.fabricante }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef>Cód. Produto</th>
+      <td mat-cell *matCellDef="let produto">{{ produto.codigo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let produto">{{ produto.descricao }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef>Valor</th>
+      <td mat-cell *matCellDef="let produto; let i = index">
+        <ng-container *ngIf="!editingIndexes[i]; else editValor">
+          {{ produto.valor | currency }}
+        </ng-container>
+        <ng-template #editValor>
+          <div *ngIf="editingValorIndex === i" class="edit-container">
+            <input type="number" class="editable-value" [(ngModel)]="editedValores[i]" step="0.01">
+            <button mat-icon-button class="save-button" (click)="salvarEdicao(i, 'valor')">
+              <mat-icon>done</mat-icon>
+            </button>
+            <button mat-icon-button class="cancel-button" (click)="cancelarEdicao(i, 'valor')">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </ng-template>
+        <button mat-icon-button class="edit-button" (click)="editarProduto(produto, i, 'valor')" [disabled]="editingValorIndex === i || produto.valor > 1">
+          <mat-icon *ngIf="editingValorIndex !== i && produto.valor <= 1">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="desconto">
+      <th mat-header-cell *matHeaderCellDef>Desconto</th>
+      <td mat-cell *matCellDef="let produto; let i = index">
+        <ng-container *ngIf="!editingIndexes[i]; else editDesconto">
+          {{ formatarDesconto(produto.desconto) }}
+        </ng-container>
+        <ng-template #editDesconto>
+          <div *ngIf="editingDescontoIndex === i" class="edit-container">
+            <input #editDescontoInput type="number" class="editable-value" [(ngModel)]="editedDescontos[i]" step="0.01">
+            <button mat-icon-button class="save-button" (click)="salvarEdicao(i, 'desconto')">
+              <mat-icon>done</mat-icon>
+            </button>
+            <button mat-icon-button class="cancel-button" (click)="cancelarEdicao(i, 'desconto')">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </ng-template>
+        <button mat-icon-button class="edit-button" (click)="editarProduto(produto, i, 'desconto')" [disabled]="editingDescontoIndex === i">
+          <mat-icon *ngIf="editingDescontoIndex !== i">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotal">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let produto; let i = index">
+        {{ calcularValorComDesconto(produto) | currency }}
+        <div *ngIf="i === produtosFiltrados.length - 1" class="total-valor">
+          <strong>Total Valor com Desconto:</strong> {{ totalValoresSemDesconto | currency }}
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let produto; columns: colunas;"></tr>
+  </table>
+
+  <div class="footer">
+    Desenvolvido por <strong>Andrew J Mousquer</strong>
+    <a href="https://www.instagram.com/andrewjmousquer" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://github.com/andrewjmousquer" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</div>
